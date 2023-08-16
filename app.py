@@ -4,9 +4,12 @@ import pygame
 
 pygame.init()
 
-screen = pygame.display.set_mode((700, 600))
+screen = pygame.display.set_mode((800, 900))
 
-rect = pygame.Rect(50, 100, 50, 100)
+player = pygame.image.load('test.png')
+
+player_x = 50
+player_y = 50
 
 
 while True:
@@ -20,18 +23,17 @@ while True:
         if event.type == pygame.KEYDOWN:
 
             if event.key == pygame.K_UP:
-                rect.move_ip(0, -20)
+                player_y -= 10
 
             if event.key == pygame.K_DOWN:
-                rect.move_ip(0, 20)
+                player_y += 10
 
             if event.key == pygame.K_LEFT:
-                rect.move_ip(-20, 0)
+                player_x -= 10
 
             if event.key == pygame.K_RIGHT:
-                rect.move_ip(20, 0)
+                player_x += 10
 
+    screen.blit(player, (player_x, player_y))
 
-
-    pygame.draw.rect(screen, (0, 255, 0), rect)
     pygame.display.flip()
